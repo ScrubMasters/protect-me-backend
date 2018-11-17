@@ -138,6 +138,11 @@ var UserController = {
                     }
                   });
                 })
+                .catch(err => {
+                  res.status(404).json({
+                    error: "User creation error."
+                  })
+                })
               }
             });
           }
