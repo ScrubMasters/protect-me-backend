@@ -127,7 +127,7 @@ var UserController = {
                 .then(result => {
                   res.status(201).json({
                     message:"User " + user.username + " created correctly",
-
+                    user: user,
                     login_request: {
                       type: "POST",
                       url: "http://localhost:3000/users/login"
