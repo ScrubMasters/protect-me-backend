@@ -23,11 +23,9 @@ const AlertSchema = mongoose.Schema({
     required: true
   },
 
-/*TODO
   audio: {
-    type:
-  }
-*/
+    type: String
+  },
 
   createdBy: {
     type: mongoose.Schema.Types.ObjectId, 
