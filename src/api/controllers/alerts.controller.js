@@ -12,6 +12,7 @@ var AlertController = {
         return {
           _id: alert._id,
           severity: alert.severity,
+          creation_date: alert.creation_date,
           //audio: alert.audio,
           created_by: alert.created_by,
 
