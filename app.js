@@ -4,15 +4,16 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const userRoutes = require("./src/api/routes/users.routes");
+const defsProfs = require("./src/predefinedList");
 
 //MongoDB connection PATH
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true
 });
 
+defsProfs.create_prof();
 mongoose.Promise = global.Promise;//Supresses a warning about promises.
 mongoose.set('useCreateIndex', true); //Suppresses the warning about collection.ensureIndex
-
 app.use("/imageUploads", express.static('imageUploads'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json()); 
