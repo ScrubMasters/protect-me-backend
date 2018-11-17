@@ -14,9 +14,9 @@ router.get("/:alertId", AlertController.get_alert);
 router.post("/audio", AlertController.create_alert_audio);
 
 //create alert without audio
-/*router.post("/", AlertController.create_alert_no_audio);
+router.post("/", AlertController.create_alert_no_audio);
 
 //delete alert
 router.delete("/:alertId", AlertController.delete_alert);
-*/
+
 module.exports = router;
