@@ -63,13 +63,14 @@ var AlertController = {
   },
   //create alert with audio
   create_alert_audio: (req, res) => {
+    console.log(req);
     const alert = new Alert({
       _id: new mongoose.Types.ObjectId(),
       severity: req.body.severity,
       creation_date: req.body.creation_date,
       longitude: req.body.longitude,
       latitude: req.body.latitude,
-      //audio: req.body.audio,
+      audio: req.audio,
       createdBy: req.body.createdBy
     });
     alert.save()
