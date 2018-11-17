@@ -17,7 +17,11 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage, limits: { fields: 1, fileSize: 6000000, files: 1, parts: 2 }});
+const upload = multer(
+    { storage: storage, limits: {
+        fields: 1, fileSize: 6000000, files: 1, parts: 2
+        }
+    });
 
 //get all alerts
 router.get("/", AlertController.get_all_alerts);
@@ -33,5 +37,8 @@ router.post("/", AlertController.create_alert_no_audio);
 
 //delete alert
 router.delete("/:alertId", AlertController.delete_alert);
+
+//modify audio
+router.post('/audio/:userId', checkAuth, upload.single('audioUploads'), UserController.modify_img);
 
 module.exports = router;
