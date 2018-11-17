@@ -1,7 +1,7 @@
 {
-  "name": "hackaton-backend-nodejs",
+  "name": "protect-me-backend",
   "version": "1.0.0",
-  "description": "![travis-ci](https://travis-ci.com/Guillem96/express-hackaton-template.svg?branch=master)",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "test",
