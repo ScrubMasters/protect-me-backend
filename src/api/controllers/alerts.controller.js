@@ -73,7 +73,6 @@ var AlertController = {
       createdBy: req.body.createdBy
     });
     alert.save()
-    .populate('createdBy')
     .then(result => {
       res.status(201).json({
         message: "Alert created correctly",
@@ -104,7 +103,6 @@ var AlertController = {
       createdBy: req.body.createdBy
     });
     alert.save()
-    .populate('createdBy')
     .then(result => {
       res.status(201).json({
         message: "Alert created correctly",
