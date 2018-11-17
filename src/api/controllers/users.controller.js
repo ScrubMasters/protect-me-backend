@@ -7,7 +7,7 @@ const User = require('../models/users.model');
 var UserController = {
   get_all_users: (req,res) => {
     User.find()
-    .select('username displayName email userImage created_at')
+    .select('username userRole displayName email userImage created_at')
     .exec()
     .then(result => {
       res.status(200).json({
@@ -41,7 +41,7 @@ var UserController = {
   get_user: (req, res) => {
     const id= req.params.userId;
     User.findById(id)
-    .select("username displayName email userImage created_at")
+    .select("username userRole displayName email userImage created_at")
     .exec()
     .then(user => {
       if(!user){
@@ -65,6 +65,27 @@ var UserController = {
     });
   },
 
+  modify_img: (req, res, next) => {
+    const id = req.params.userId;
+    console.log(req.avatar);
+    User.updateOne({_id: id}, {$set: {userImage: req.avatar} })//2nd argument, how we want to update this.
+              .exec()
+              .then(result => {
+                res.status(200).json({
+                  message: "User updated",
+                  user: result,
+                  request: {
+                    type: "GET",
+                    url: "http:/localhost:3000/users/" + id
+                  }
+                });
+              })
+              .catch(err => {
+                res.status(500).json({
+                  error: err
+                });
+              });
+  },
   user_signUp: (req,res,next) => {
     //checking username not used
     User.find({username: req.body.username})
@@ -98,7 +119,8 @@ var UserController = {
                   firstName: req.body.firstName,
                   lastName: req.body.lastName,
                   displayName: req.body.displayName,
-                  userImage: req.file.path,
+                  // userImage: req.file.path,
+                  userRole: req.body.userRole,
                   created_at: req.body.created_at
                 });
                 user.save()
@@ -162,9 +184,8 @@ var UserController = {
               }
             );
             return res.status(200).json({
-              message: "Thanks for login In" + displayName,
+              message: "Thanks for login In " + user[0].username,
               user: user,
-              displayName: displayName,
               token: token
             });
           }

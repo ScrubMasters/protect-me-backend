@@ -11,7 +11,9 @@ const storage = multer.diskStorage({
     cb(null,'./imageUploads');//null makes that non-passing this won't throw error.
   },
   filename: function(req, file, cb) {
-    cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname + UserController.user.displayName);
+    const path = new Date().toISOString().replace(/:/g, '-') + file.originalname;
+    req.avatar = path;
+    cb(null, path);
   }
 });
 //Check if its an accepted image format.
@@ -35,9 +37,10 @@ router.get('/', UserController.get_all_users);
 
 //get_user (auth or not?)
 router.get('/:userId', UserController.get_user);
-
+//modify image
+router.post('/avatar/:userId', checkAuth, upload.single('imageUploads'), UserController.modify_img);
 //signUp
-router.post('/signup', upload.single('userImage'), UserController.user_signUp);
+router.post('/signup', UserController.user_signUp);
 
 //login
 router.post('/login', UserController.user_login);
