@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const userRoutes = require("./src/api/routes/users.routes");
+const alertRoutes = require("./src/api/routes/users.routes");
+
 const defsProfs = require("./src/predefinedList");
 
 //MongoDB connection PATH
@@ -35,6 +37,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/users/", userRoutes);
+app.use("/alerts/", alertRoutes);
 
 //Handle all requests errors here, because if I arrive here
 // it means that any request has matched with the other file ones.
