@@ -23,16 +23,8 @@ app.use(bodyParser.json());
 //Before any request is done we have to "disable" CORS
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*') //second parameter specifies the url that can have acces, no url means all can access.
-  //HEADERS YOU WANT TO SUPPORT
-  res.header(
-      'Access-Control-Allow-Headers',
-      'Origin, X-Requested-With, Content-Type, Accept, Authoritzation'
-      );
-  if(req.method === 'OPTIONS') {
-      //HTTP VERBS THAT YOU WANT TO SUPPORT.
-      res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-      return res.status(200).json({});
-  }
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
   next();
 });
 
