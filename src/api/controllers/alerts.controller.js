@@ -7,8 +7,8 @@ const UserController = require('../controllers/users.controller');
 var AlertController = {
   get_all_alerts: (req, res, next) => {
     Alert.find()
-    .select('severity creation_data created_by')//afegir audio
-    //.populate('user', '_id')
+    .select('severity creation_data latitude longitude createdBy')//afegir audio
+    .populate('createdBy')
     .exec()
     .then(result => {
       res.status(200).json({
@@ -16,9 +16,11 @@ var AlertController = {
           return {
             _id: alert._id,
             severity: alert.severity,
+            latitude: alert.latitude,
+            longitude: alert.longitude,
             creation_date: alert.creation_date,
             //audio: alert.audio,
-            created_by: alert.created_by,
+            createdBy: alert.createdBy,
 
             request: {
               name: "get_alert",
@@ -39,7 +41,7 @@ var AlertController = {
   get_alert: (req, res) => {
     const id = req.params.alertId;
     Alert.findById(id)
-    .select('severity creation_data created_by')//afegir audio
+    .select('severity creation_data latitude longitude createdBy')//afegir audio
     .exec()
     .then(alert => {
       if(!alert) {
@@ -64,8 +66,10 @@ var AlertController = {
       _id: new mongoose.Types.ObjectId(),
       severity: req.body.severity,
       creation_date: req.body.creation_date,
+      longitude: req.body.longitude,
+      latitude: req.body.latitude,
       //audio: req.body.audio,
-      created_by: "Me"
+      createdBy: req.body.createdBy
     });
     alert.save()
     .then(result => {
@@ -93,7 +97,7 @@ var AlertController = {
       _id: new mongoose.Types.ObjectId(),
       severity: req.body.severity,
       creation_date: req.body.creation_date,
-      created_by: "Me"
+      createdBy: req.body.createdBy
     });
     alert.save()
     .then(result => {

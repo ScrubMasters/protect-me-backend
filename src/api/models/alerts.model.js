@@ -13,17 +13,26 @@ const AlertSchema = mongoose.Schema({
     default: new Date()
   },
 
+  longitude: {
+    type: Number,
+    required: true
+  },
+
+  latitude: {
+    type: Number,
+    required: true
+  },
+
 /*TODO
   audio: {
     type:
   }
 */
 
-  created_by: {
-    type: String
-    /*type: mongoose.Schema.Types.ObjectId, 
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId, 
     ref: 'User', 
-    required: true*/
+    required: true
   }
 
 });
