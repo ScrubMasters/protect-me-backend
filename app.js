@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const userRoutes = require("./src/api/routes/users.routes");
 
 //MongoDB connection PATH
-mongoose.connect(process.env.MONGO_DB_URL, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true
 });
 
