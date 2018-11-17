@@ -65,6 +65,27 @@ var UserController = {
     });
   },
 
+  modify_img: (req, res, next) => {
+    const id = req.params.userId;
+    console.log(req.avatar);
+    User.updateOne({_id: id}, {$set: {userImage: req.avatar} })//2nd argument, how we want to update this.
+              .exec()
+              .then(result => {
+                res.status(200).json({
+                  message: "User updated",
+                  user: result,
+                  request: {
+                    type: "GET",
+                    url: "http:/localhost:3000/users/" + id
+                  }
+                });
+              })
+              .catch(err => {
+                res.status(500).json({
+                  error: err
+                });
+              });
+  },
   user_signUp: (req,res,next) => {
     //checking username not used
     User.find({username: req.body.username})
