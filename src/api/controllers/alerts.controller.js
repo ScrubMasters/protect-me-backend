@@ -97,6 +97,8 @@ var AlertController = {
       _id: new mongoose.Types.ObjectId(),
       severity: req.body.severity,
       creation_date: req.body.creation_date,
+      longitude: req.body.longitude,
+      latitude: req.body.latitude,
       createdBy: req.body.createdBy
     });
     alert.save()
