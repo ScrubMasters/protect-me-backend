@@ -15,7 +15,7 @@ const { Readable } = require('stream');
 const app = express();
 app.use('/tracks', trackRoute);
 
-get_audio: (req, res) => {
+trackRoute.get('/:trackID', (req, res) => {
     try {
         var trackID = new ObjectID(req.params.trackID);
     } catch(err) {
@@ -41,12 +41,12 @@ get_audio: (req, res) => {
     downloadStream.on('end', () => {
         res.end();
     });
-};
+});
 
 /**
  * POST /tracks
  */
-put_audio: (req, res) => {
+trackRoute.post('/', (req, res) => {
     const storage = multer.memoryStorage()
     const upload = multer({ storage: storage, limits: { fields: 1, fileSize: 6000000, files: 1, parts: 2 }});
     upload.single('track')(req, res, (err) => {
@@ -79,7 +79,7 @@ put_audio: (req, res) => {
             return res.status(201).json({ message: "File uploaded successfully, stored under Mongo ObjectID: " + id });
         });
     });
-};
+});
 
 app.listen(3005, () => {
     console.log("App listening on port 3005!");
