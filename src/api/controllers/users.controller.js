@@ -18,7 +18,6 @@ var UserController = {
             email: user.email,
             userRole: user.userRole,
             userImage: user.userImage,
-            userRole: user.userRole,
             firstName: user.firstName,
             lastName: user.lastName,
             displayName: user.displayName,
@@ -36,7 +35,7 @@ var UserController = {
     })
     .catch(err => {
       res.status(500).json({
-        error:err
+        error: "Server could not get users, please try again"
       });
     });
   },
@@ -62,7 +61,7 @@ var UserController = {
     })
     .catch(err => {
       res.status(500).json({
-        error:err
+        error: "Server could not get user, please try again"
       });
     });
   },
@@ -84,7 +83,7 @@ var UserController = {
               })
               .catch(err => {
                 res.status(500).json({
-                  error: err
+                  error: "Server could not save the image, please try again"
                 });
               });
   },
@@ -151,14 +150,14 @@ var UserController = {
         })
         .catch(err => {
           res.status(500).json({
-            error: err
+            error: "Server could not create a user, please try again"
           });
         });
       }
     })
     .catch(err => {
       res.status(500).json({
-        error:err
+        error: "Server could not manage the petition, please try again"
       });
     });
   },
@@ -204,7 +203,7 @@ var UserController = {
     })
     .catch(err => {
       res.status(500).json({
-        error: err
+        error: "Server could not serve log in petition, please try again"
       });
     });
   },
@@ -219,7 +218,7 @@ var UserController = {
     })
     .catch(err => {
       res.status(500).json({
-        error: err
+        error: "Serve could not delete user, please try again"
       })
     });
   }
