@@ -42,6 +42,7 @@ var AlertController = {
     const id = req.params.alertId;
     Alert.findById(id)
     .select('severity creation_data latitude longitude createdBy')//afegir audio
+    .populate('createdBy')
     .exec()
     .then(alert => {
       if(!alert) {
@@ -72,6 +73,7 @@ var AlertController = {
       createdBy: req.body.createdBy
     });
     alert.save()
+    .populate('createdBy')
     .then(result => {
       res.status(201).json({
         message: "Alert created correctly",
@@ -102,6 +104,7 @@ var AlertController = {
       createdBy: req.body.createdBy
     });
     alert.save()
+    .populate('createdBy')
     .then(result => {
       res.status(201).json({
         message: "Alert created correctly",
