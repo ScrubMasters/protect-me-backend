@@ -7,7 +7,7 @@ const UserController = require('../controllers/users.controller');
 var AlertController = {
   get_all_alerts: (req, res, next) => {
     Alert.find()
-    .select('severity creation_data latitude longitude createdBy')//afegir audio
+    .select('severity creation_date latitude longitude createdBy')//afegir audio
     .populate('createdBy')
     .exec()
     .then(result => {
@@ -41,7 +41,7 @@ var AlertController = {
   get_alert: (req, res) => {
     const id = req.params.alertId;
     Alert.findById(id)
-    .select('severity creation_data latitude longitude createdBy')//afegir audio
+    .select('severity creation_date latitude longitude createdBy')//afegir audio
     .populate('createdBy')
     .exec()
     .then(alert => {
