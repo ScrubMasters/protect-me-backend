@@ -8,7 +8,7 @@ const AlertController = require("../controllers/users.controller.js");
 router.get("/", AlertController.get_all_alerts);
 
 //get alert
-router.get("/:alertId", AlertController.get_user);
+router.get("/:alertId", AlertController.get_alert);
 
 //create alert with audio
 router.post("/", AlertController.create_alert_audio);
