@@ -8,7 +8,7 @@ const AlertSchema = mongoose.Schema({
     required: true
   },
 
-  data: {
+  creation_data: {
     type: Date,
     default: new Date()
   },

@@ -16,6 +16,7 @@ var UserController = {
             _id: user._id,
             username: user.username,
             email: user.email,
+            userRole: user.userRole,
             userImage: user.userImage,
             firstName: user.firstName,
             lastName: user.lastName,
