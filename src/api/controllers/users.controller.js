@@ -109,7 +109,7 @@ var UserController = {
             bcrypt.hash(req.body.password, 10, (err, hash) => {
               if(err) {
                 res.status(500).json({
-                  error: err
+                  error: "Server could not manage your petition, please try again"
                 });
               } else {
                 const user = new User({
