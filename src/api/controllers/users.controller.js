@@ -225,6 +225,4 @@ var UserController = {
 
 }
 
-//Comment
-
 module.exports = UserController

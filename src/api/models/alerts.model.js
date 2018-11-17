@@ -21,6 +21,13 @@ const AlertSchema = mongoose.Schema({
 
   created_by: {
     type: String
+    /*type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User', 
+    required: true*/
   }
 
 });
+
+var AlertModel = mongoose.model('Alert', AlertSchema);
+
+module.exports = AlertModel;
