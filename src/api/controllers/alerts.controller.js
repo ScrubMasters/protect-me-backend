@@ -1,8 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Alert = require('../models/alerts.model');
-const User = require('../models/users.model');
-const UserController = require('../controllers/users.controller');
 
 var AlertController = {
   get_all_alerts: (req, res, next) => {
@@ -19,7 +17,7 @@ var AlertController = {
             latitude: alert.latitude,
             longitude: alert.longitude,
             creation_date: alert.creation_date,
-            //audio: alert.audio,
+            audio: alert.audio,
             createdBy: alert.createdBy,
 
             request: {
@@ -33,7 +31,7 @@ var AlertController = {
     })
     .catch(err => {
       res.status(500).json({
-        error: err
+        error: "Server could not serve GET all alerts petition."
       });
     });
   },
@@ -90,7 +88,7 @@ var AlertController = {
     })
     .catch(err => {
       res.status(500).json({
-        error: err
+        error: "Server could not create an alert with audio."
       });
     });
   }, 
@@ -120,7 +118,7 @@ var AlertController = {
     })
     .catch(err => {
       res.status(500).json({
-        error: err
+        error: "Server could not create an alert without audio."
       });
     });
   },
@@ -135,7 +133,7 @@ var AlertController = {
     })
     .catch( err => {
       res.status(500).json({
-        error: err
+        error: "Server could not serve DELETE petition."
       });
     });
   }
