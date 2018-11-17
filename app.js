@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const userRoutes = require("./src/api/routes/users.routes");
+const alertRoutes = require("./src/api/routes/alerts.routes");
+
 const defsProfs = require("./src/predefinedList");
 
 //MongoDB connection PATH
@@ -35,10 +37,11 @@ app.use((req, res, next) => {
 });
 
 app.use("/users/", userRoutes);
+app.use("/alerts/", alertRoutes);
 
 //Handle all requests errors here, because if I arrive here
 // it means that any request has matched with the other file ones.
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
   const error = new Error("Not found");
   error.status = 404;
   next(error); //forward the error request instead of the original one essentially.
@@ -52,6 +55,6 @@ app.use((error, req, res, next) => {
           message: error.message
       }
   });
-});
+});*/
 
 module.exports = app;

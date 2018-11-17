@@ -16,6 +16,7 @@ var UserController = {
             _id: user._id,
             username: user.username,
             email: user.email,
+            userRole: user.userRole,
             userImage: user.userImage,
             userRole: user.userRole,
             firstName: user.firstName,
@@ -224,7 +225,5 @@ var UserController = {
   }
 
 }
-
-//Comment
 
 module.exports = UserController
