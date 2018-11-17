@@ -1,6 +1,6 @@
 # Express Hackaton Template
 
-![travis-ci](https://travis-ci.com/Guillem96/express-hackaton-template.svg?branch=master)
+![travis-ci](https://travis-ci.com/ScrubMasters/protect-me-backend.svg?branch=master)
 
 Node server which includes:
 - MongoDB
