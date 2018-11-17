@@ -10,8 +10,11 @@ router.get("/", AlertController.get_all_alerts);
 //get alert
 router.get("/:alertId", AlertController.get_user);
 
-//create alert
-router.post("/", AlertController.create_alert);
+//create alert with audio
+router.post("/", AlertController.create_alert_audio);
+
+//create alert without audio
+router.post("/", AlertController.create_alert_no_audio);
 
 //delete alert
 router.delete("/:alertId", AlertController.delete_alert);
