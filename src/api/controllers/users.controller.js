@@ -141,8 +141,8 @@ var UserController = {
                 .catch(err => {
                   res.status(404).json({
                     error: "User creation error."
-                  })
-                })
+                  });
+                });
               }
             });
           }
@@ -190,7 +190,7 @@ var UserController = {
             );
             return res.status(200).json({
               message: "Thanks for login In " + user[0].username,
-              user: user,
+              user: user[0],
               token: token
             });
           }
