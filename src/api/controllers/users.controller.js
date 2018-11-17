@@ -119,7 +119,7 @@ var UserController = {
                   firstName: req.body.firstName,
                   lastName: req.body.lastName,
                   displayName: req.body.displayName,
-                  // userImage: req.file.path,
+                  userImage: req.body.phoyoURL,
                   userRole: req.body.userRole,
                   created_at: req.body.created_at
                 });
