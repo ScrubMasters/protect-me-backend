@@ -5,7 +5,7 @@ const Alert = require('../models/alerts.model');
 var AlertController = {
   get_all_alerts: (req, res, next) => {
     Alert.find()
-    .select('severity creation_date latitude longitude createdBy')//afegir audio
+    .select('severity creation_date audio latitude longitude createdBy')
     .populate('createdBy')
     .exec()
     .then(result => {
@@ -39,7 +39,7 @@ var AlertController = {
   get_alert: (req, res) => {
     const id = req.params.alertId;
     Alert.findById(id)
-    .select('severity creation_date latitude longitude createdBy')//afegir audio
+    .select('severity creation_date audio latitude longitude createdBy')//afegir audio
     .populate('createdBy')
     .exec()
     .then(alert => {
@@ -61,7 +61,6 @@ var AlertController = {
   },
   //create alert with audio
   create_alert_audio: (req, res) => {
-    console.log(req);
     const alert = new Alert({
       _id: new mongoose.Types.ObjectId(),
       severity: req.body.severity,
