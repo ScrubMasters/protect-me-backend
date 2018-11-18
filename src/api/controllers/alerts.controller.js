@@ -5,7 +5,7 @@ const Alert = require('../models/alerts.model');
 var AlertController = {
   get_all_alerts: (req, res, next) => {
     Alert.find()
-    .select('severity creation_date audio latitude longitude createdBy')//afegir audio
+    .select('severity creation_date audio latitude longitude createdBy')
     .populate('createdBy')
     .exec()
     .then(result => {
