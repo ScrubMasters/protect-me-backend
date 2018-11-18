@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 //Check if its an accepted image format.
 const fileFilter = (req, file, cb) => {
   console.log(file);
-  if(file.mimetype === "audio/mpeg" || file.mimetype === "audio/mp4"){
+  if(file.mimetype === "audio/mpeg" || file.mimetype === "audio/mp4" || file.mimetype === "text/plain"){
     cb(null, true);
   } else {
     cb(null, false);
@@ -29,8 +29,8 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   storage: storage, limits:{
     fileSize: 1024 * 1024 * 100
-  },
-  fileFilter: fileFilter
+  }//,
+  //fileFilter: fileFilter
 }); //We can pass a config to multer
 //get all alerts
 router.get("/", checkAuth, AlertController.get_all_alerts);
