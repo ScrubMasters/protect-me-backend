@@ -23,7 +23,7 @@ var AlertController = {
             request: {
               name: "get_alert",
               type: "GET",
-              url: "http://localhost:3000/alerts/" + alert._id
+              url: "https://protect-me-backend.herokuapp.com/alerts/" + alert._id
             }
           }
       })
@@ -53,7 +53,7 @@ var AlertController = {
         request: {
           name: "get_all_alerts",
           type: "GET",
-          url: "http://localhost:3000/alerts"
+          url: "https://protect-me-backend.herokuapp.com/alerts"
         }
       });
     });
@@ -77,11 +77,11 @@ var AlertController = {
         alert: alert,
         get_alert: {
           type: "GET",
-          url: "http://localhost:3000/alerts/" + alert._id
+          url: "https://protect-me-backend.herokuapp.com/alerts/" + alert._id
         },
         create_alert_no_audio: {
           type:"POST",
-          url: "http://localhost:3000/alerts/"
+          url: "https://protect-me-backend.herokuapp.com/alerts/"
         }
       });
     })
@@ -107,11 +107,11 @@ var AlertController = {
         alert: alert,
         get_alert: {
           type: "GET",
-          url: "http://localhost:3000/alerts/" + alert._id
+          url: "https://protect-me-backend.herokuapp.com/alerts/" + alert._id
         },
         create_alert_audio: {
           type:"POST",
-          url: "http://localhost:3000/alerts/audio"
+          url: "https://protect-me-backend.herokuapp.com/alerts/audio"
         }
       });
     })
