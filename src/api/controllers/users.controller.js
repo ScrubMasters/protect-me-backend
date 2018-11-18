@@ -26,7 +26,7 @@ var UserController = {
             request: {
               name: "get_user",
               type: "GET",
-              url: "http://localhost:3000/users/" + user._id
+              url: "https://protect-me-backend.herokuapp.com/users/" + user._id
 
             }
           }
@@ -55,7 +55,7 @@ var UserController = {
         request: {
           name: "get_all_users",
           type: "GET",
-          url:"http://localhost:3000/users"
+          url:"https://protect-me-backend.herokuapp.com/users"
         }
       });
     })
@@ -77,7 +77,7 @@ var UserController = {
                   user: result,
                   request: {
                     type: "GET",
-                    url: "http:/localhost:3000/users/" + id
+                    url: "https://protect-me-backend.herokuapp.com/users/" + id
                   }
                 });
               })
@@ -131,11 +131,11 @@ var UserController = {
                     user: user,
                     login_request: {
                       type: "POST",
-                      url: "http://localhost:3000/users/login"
+                      url: "https://protect-me-backend.herokuapp.com/users/login"
                     },
                     get_request: {
                       type: "GET",
-                      url: "http://localhost:3000/users/" + user._id
+                      url: "https://protect-me-backend.herokuapp.com/users/" + user._id
                     }
                   });
                 })
@@ -213,7 +213,7 @@ var UserController = {
     .exec()
     .then(result => {
       res.status(200).json({
-        message: "User" + username + "deleted succesfully"
+        message: "User deleted succesfully"
       });
     })
     .catch(err => {
