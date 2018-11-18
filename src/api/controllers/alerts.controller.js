@@ -61,7 +61,6 @@ var AlertController = {
   },
   //create alert with audio
   create_alert_audio: (req, res) => {
-    console.log(req);
     const alert = new Alert({
       _id: new mongoose.Types.ObjectId(),
       severity: req.body.severity,
