@@ -69,7 +69,7 @@ module.exports = {
                                     userRole: "Teacher",
                                     created_at: new Date().toLocaleString()
                                 });
-
+                                //save
                                 prof1.save();
                                 prof2.save();
                                 prof3.save();
